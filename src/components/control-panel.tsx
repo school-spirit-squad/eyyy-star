@@ -149,6 +149,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               <Button
                 onClick={runAStar}
                 className="w-full"
+                variant="black"
                 disabled={isRunningAStar || hasWon}
               >
                 {isRunningAStar ? "Running A*..." : "Run A* Algorithm"}
