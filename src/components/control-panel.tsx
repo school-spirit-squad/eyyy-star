@@ -92,7 +92,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               onValueChange={(value) => setMazeSize(parseInt(value))}
               disabled={isRunningAStar}
             >
-              <SelectTrigger id="maze-size">
+              <SelectTrigger id="maze-size" className="w-full">
                 <SelectValue placeholder="Select maze size" />
               </SelectTrigger>
               <SelectContent>
