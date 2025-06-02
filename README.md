@@ -54,7 +54,7 @@ For each node, A* maintains these values and explores the nodes with the lowest 
 
 1. Clone the repository
   ```
-  https://github.com/RobBaban12/Astar.git
+  https://github.com/school-spirit-squad/eyyy-star.git
   ```
 2. Install dependencies:
    ```
