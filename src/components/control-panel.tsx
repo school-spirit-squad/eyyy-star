@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import { Position } from "@/types/maze";
 
 interface ControlPanelProps {
   mazeSize: number;
@@ -30,6 +31,8 @@ interface ControlPanelProps {
   visualizationSpeed: number;
   setVisualizationSpeed: (speed: number) => void;
   hasWon: boolean;
+  optimalPathLength: number | null;
+  optimalPath: Position[] | null;
 }
 
 const ControlPanel: React.FC<ControlPanelProps> = ({
@@ -43,6 +46,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
   visualizationSpeed,
   setVisualizationSpeed,
   hasWon,
+  optimalPathLength,
+  optimalPath,
 }) => {
   return (
     <div className="lg:w-1/4 space-y-4">
@@ -156,6 +161,42 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
               </Button>
             )}
           </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Optimal Path Information</CardTitle>
+          <CardDescription>
+            Pre-calculated optimal path for the current maze
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="flex items-center justify-between">
+            <Label>Path Length:</Label>
+            <Badge variant="secondary">
+              {optimalPathLength
+                ? `${optimalPathLength} steps`
+                : "Calculating..."}
+            </Badge>
+          </div>
+
+          {optimalPath && optimalPath.length > 0 && (
+            <div className="space-y-2">
+              <Label>Optimal Path:</Label>
+              <div className="max-h-32 overflow-y-auto bg-gray-50 p-2 rounded text-xs">
+                {optimalPath.map((pos, index) => (
+                  <span key={index} className="inline-block mr-1 mb-1">
+                    ({pos.x},{pos.y})
+                    {index < optimalPath.length - 1 ? " → " : ""}
+                  </span>
+                ))}
+              </div>
+              <p className="text-xs text-gray-500">
+                Coordinates show the shortest path from start to end
+              </p>
+            </div>
+          )}
         </CardContent>
       </Card>
 

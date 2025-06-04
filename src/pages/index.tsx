@@ -9,8 +9,14 @@ const Index = () => {
   const [isManualMode, setIsManualMode] = useState(true);
   const [hasWon, setHasWon] = useState(false);
 
-  const { mazeData, mazeSize, setMazeSize, initializeMaze, optimalPathLength } =
-    useMazeGenerator();
+  const {
+    mazeData,
+    mazeSize,
+    setMazeSize,
+    initializeMaze,
+    optimalPathLength,
+    optimalPath,
+  } = useMazeGenerator();
 
   const { playerPosition, resetPlayer, movePlayer } = usePlayerMovement(
     mazeData,
@@ -73,6 +79,8 @@ const Index = () => {
           visualizationSpeed={visualizationSpeed}
           setVisualizationSpeed={setVisualizationSpeed}
           hasWon={hasWon}
+          optimalPathLength={optimalPathLength}
+          optimalPath={optimalPath}
         />
       </main>
     </div>
